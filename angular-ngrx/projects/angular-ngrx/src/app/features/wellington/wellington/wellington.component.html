@@ -1,0 +1,31 @@
+<div class="container"><br>
+  <div class="col-md-6 offset-md-3">
+    <div>
+      <h1>Formulario</h1>
+    </div>
+    <form [formGroup]="angForm">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="name" [(ngModel)]="dado_usuario.name">
+        </mat-form-field>
+        <mat-error *ngIf="isControlHasError('name','required')">
+          <p>{{required}}</p>
+        </mat-error>
+        <mat-form-field>
+          <input matInput placeholder="CPF" formControlName="cpf" [(ngModel)]="dado_usuario.cpf">
+        </mat-form-field>
+        <mat-error *ngIf="isControlHasError('cpf','required')">
+          <p>{{required}}</p>
+        </mat-error>
+      </div>
+    </form>
+
+    <button type="submit" class="btn btn-primary" [disabled]="angForm.pristine || angForm.invalid"
+      (click)="onSubmit(dado_usuario)">Salvar</button>
+
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary" (click)="getdados()">Busca Api</button>
+
+  </div>
+</div>
